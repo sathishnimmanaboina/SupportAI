@@ -1,4 +1,5 @@
 from flask import Blueprint
+from flask import render_template
 
 dashboard_bp = Blueprint(
     "dashboard",
@@ -9,4 +10,4 @@ dashboard_bp = Blueprint(
 @dashboard_bp.route("/")
 def home():
 
-    return "<h1>Welcome to SupportAI 🚀</h1>"
+    return render_template("index.html")
