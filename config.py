@@ -5,8 +5,13 @@ load_dotenv()
 
 
 class Config:
-    SECRET_KEY = os.getenv("SECRET_KEY")
+    SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")
 
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
+    database_url = os.getenv("DATABASE_URL")
+
+    if database_url:
+        SQLALCHEMY_DATABASE_URI = database_url
+    else:
+        SQLALCHEMY_DATABASE_URI = "sqlite:////tmp/supportai.db"
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
