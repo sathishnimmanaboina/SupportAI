@@ -5,6 +5,7 @@ from config import Config
 from app.extensions import db
 from app.extensions import migrate
 from app.extensions import login_manager
+from app import models
 
 
 def create_app():
