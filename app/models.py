@@ -63,6 +63,13 @@ class Ticket(db.Model):
         default="General"
     )
 
+    # ---------- AI Fields ----------
+    ai_summary = db.Column(db.Text)
+
+    ai_reply = db.Column(db.Text)
+
+    # -------------------------------
+
     created_at = db.Column(
         db.DateTime,
         default=datetime.utcnow

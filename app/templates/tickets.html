@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}My Tickets{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">My Tickets</h2>
+
+<a href="{{ url_for('tickets.create_ticket') }}" class="btn btn-success mb-3">
+Create Ticket
+</a>
+
+{% for ticket in tickets %}
+
+<div class="card mb-4">
+
+<div class="card-body">
+
+<h4>{{ ticket.title }}</h4>
+
+<p>{{ ticket.description }}</p>
+
+<hr>
+
+<p><strong>Category:</strong> {{ ticket.category }}</p>
+
+<p><strong>Priority:</strong> {{ ticket.priority }}</p>
+
+<p><strong>Status:</strong> {{ ticket.status }}</p>
+
+{% if ticket.ai_summary %}
+
+<hr>
+
+<h5>🤖 AI Summary</h5>
+
+<p>{{ ticket.ai_summary }}</p>
+
+{% endif %}
+
+{% if ticket.ai_reply %}
+
+<h5>💬 Suggested Reply</h5>
+
+<div class="alert alert-info">
+
+{{ ticket.ai_reply }}
+
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
